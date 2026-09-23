@@ -3,7 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Nuestra Boda - Rodrigo y Brenda</title>
+    <title>Nuestra Boda Rodrigo & Brenda 💕</title>
+
+    <!-- Meta etiquetas Open Graph para miniatura en WhatsApp y redes sociales -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Nuestra Boda Rodrigo & Brenda 💕">
+    <meta property="og:description" content="¡Acompáñanos a celebrar nuestra boda!">
+    <meta property="og:image" content="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda.jpg">
+    <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+
+    <!-- Meta etiquetas para Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nuestra Boda Rodrigo & Brenda 💕">
+    <meta name="twitter:description" content="¡Acompáñanos a celebrar nuestra boda!">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda.jpg">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         html, body {
@@ -63,14 +78,18 @@
         
         <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda.jpg" 
              alt="Página 1" 
-             class="w-full h-auto block m-0 p-0 border-0"
+             data-scale="1.15"
+             class="page-img w-full h-auto block m-0 p-0 border-0 object-fill"
+             onload="adjustImageHeights()"
              onerror="handleImageError(this, 0)">
 
         <!-- Página 2 con el reproductor de música integrado -->
         <div class="relative w-full m-0 p-0">
             <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20(1).jpg" 
                  alt="Página 2" 
-                 class="w-full h-auto block m-0 p-0 border-0"
+                 data-scale="1.05"
+                 class="page-img w-full h-auto block m-0 p-0 border-0 object-fill"
+                 onload="adjustImageHeights()"
                  onerror="handleImageError(this, 1)">
 
             <!-- Reproductor sobrepuesto con diseño minimalista en verde olivo según referencia -->
@@ -144,19 +163,25 @@
         <!-- Nueva Página agregada después de la Página 2 -->
         <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(1).jpg" 
              alt="Página 3" 
-             class="w-full h-auto block m-0 p-0 border-0"
+             data-scale="1.05"
+             class="page-img w-full h-auto block m-0 p-0 border-0 object-fill"
+             onload="adjustImageHeights()"
              onerror="handleImageError(this, 2)">
 
         <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(2).jpg" 
              alt="Página 4" 
-             class="w-full h-auto block m-0 p-0 border-0"
+             data-scale="1.05"
+             class="page-img w-full h-auto block m-0 p-0 border-0 object-fill"
+             onload="adjustImageHeights()"
              onerror="handleImageError(this, 3)">
 
         <!-- Página con los botones de ubicación -->
         <div class="relative w-full m-0 p-0">
             <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(3).jpg" 
                  alt="Página 5" 
-                 class="w-full h-auto block m-0 p-0 border-0"
+                 data-scale="1.05"
+                 class="page-img w-full h-auto block m-0 p-0 border-0 object-fill"
+                 onload="adjustImageHeights()"
                  onerror="handleImageError(this, 4)">
 
             <!-- Botón de ubicación a la mitad -->
@@ -176,14 +201,18 @@
 
         <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(4).jpg" 
              alt="Página 6" 
-             class="w-full h-auto block m-0 p-0 border-0"
+             data-scale="1.05"
+             class="page-img w-full h-auto block m-0 p-0 border-0 object-fill"
+             onload="adjustImageHeights()"
              onerror="handleImageError(this, 5)">
 
         <!-- Página 7 con Cuenta Regresiva integrada -->
         <div class="relative w-full m-0 p-0">
             <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(5).jpg" 
                  alt="Página 7" 
-                 class="w-full h-auto block m-0 p-0 border-0"
+                 data-scale="1.15"
+                 class="page-img w-full h-auto block m-0 p-0 border-0 object-fill"
+                 onload="adjustImageHeights()"
                  onerror="handleImageError(this, 6)">
 
             <!-- Widget de Cuenta Regresiva compacto y centrado -->
@@ -222,6 +251,22 @@
     </main>
 
     <script>
+        function adjustImageHeights() {
+            const images = document.querySelectorAll('.page-img');
+            images.forEach(img => {
+                const mult = parseFloat(img.getAttribute('data-scale') || '1');
+                img.style.height = 'auto';
+                const baseHeight = img.getBoundingClientRect().height;
+                if (baseHeight > 0) {
+                    img.style.height = Math.round(baseHeight * mult) + 'px';
+                }
+            });
+        }
+
+        window.addEventListener('load', adjustImageHeights);
+        window.addEventListener('resize', adjustImageHeights);
+        document.addEventListener('DOMContentLoaded', adjustImageHeights);
+
         const fallbackImages = [
             "https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda.jpg",
             "https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Nuestra%20Boda%20(1).jpg",

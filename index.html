@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es" class="m-0 p-0 bg-black">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Nuestra Boda - Rodrigo y Brenda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: #000000;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Force block display to eliminate native inline image browser gaps */
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            vertical-align: bottom;
+        }
+
+        /* Hide scrollbars for a completely seamless visual experience */
+        ::-webkit-scrollbar {
+            display: none;
+            width: 0px;
+            background: transparent;
+        }
+        * {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        /* Equalizer bar animation */
+        @keyframes eqBar {
+            0%, 100% { height: 4px; }
+            50% { height: 16px; }
+        }
+        .eq-bar {
+            animation: eqBar 0.8s infinite ease-in-out;
+        }
+        .eq-1 { animation-delay: 0.0s; }
+        .eq-2 { animation-delay: 0.2s; }
+        .eq-3 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body class="m-0 p-0 bg-black min-h-screen flex flex-col items-center">
+
+    <!-- Elemento de audio con la canción Suspiros -->
+    <audio id="bgAudio" loop preload="auto">
+        <source src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Suspiros%20%20Video%20Oficial%20%20-%20El%20Coyote%20y%20su%20Banda%20Tierra%20Santa.mp3" type="audio/mpeg">
+        <source src="https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Suspiros%20%20Video%20Oficial%20%20-%20El%20Coyote%20y%20su%20Banda%20Tierra%20Santa.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Layout continuo vertical -->
+    <main class="w-full max-w-2xl mx-auto m-0 p-0 flex flex-col leading-none">
+        
+        <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda.jpg" 
+             alt="Página 1" 
+             class="w-full h-auto block m-0 p-0 border-0"
+             onerror="handleImageError(this, 0)">
+
+        <!-- Página 2 con el reproductor de música integrado -->
+        <div class="relative w-full m-0 p-0">
+            <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20(1).jpg" 
+                 alt="Página 2" 
+                 class="w-full h-auto block m-0 p-0 border-0"
+                 onerror="handleImageError(this, 1)">
+
+            <!-- Reproductor sobrepuesto con diseño minimalista en verde olivo según referencia -->
+            <div class="absolute top-[15%] left-1/2 -translate-x-1/2 w-[80%] max-w-xs sm:max-w-sm flex flex-col gap-2 text-[#556B2F] z-20 select-none drop-shadow-[0_1px_2px_rgba(255,255,255,0.7)]">
+                
+                <!-- Corazón en la parte superior derecha -->
+                <div class="flex justify-end pr-0.5">
+                    <button id="heartBtn" onclick="toggleHeart()" class="text-[#556B2F] hover:scale-110 active:scale-95 transition-transform focus:outline-none">
+                        <svg id="heartIcon" class="w-5 h-5 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="2">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Línea de progreso interactiva -->
+                <div id="progressContainer" onclick="seekAudio(event)" class="relative w-full h-4 flex items-center cursor-pointer">
+                    <div class="w-full h-[1.5px] bg-[#556B2F]/40 rounded-full">
+                        <div id="progressBar" class="h-full bg-[#556B2F] rounded-full w-0 relative">
+                            <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-3 h-3 bg-[#556B2F] rounded-full shadow-sm"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fila de controles del reproductor -->
+                <div class="flex items-center justify-between px-1 pt-1">
+                    <!-- Mezclar (Shuffle) -->
+                    <button onclick="restartAudio()" class="text-[#556B2F] hover:opacity-75 active:scale-90 transition-all p-1" title="Mezclar">
+                        <svg class="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 3 21 3 21 8"></polyline>
+                            <line x1="4" y1="20" x2="21" y2="3"></line>
+                            <polyline points="21 16 21 21 16 21"></polyline>
+                            <line x1="15" y1="15" x2="21" y2="21"></line>
+                            <line x1="4" y1="4" x2="9" y2="9"></line>
+                        </svg>
+                    </button>
+
+                    <!-- Anterior (Previous) -->
+                    <button onclick="restartAudio()" class="text-[#556B2F] hover:opacity-75 active:scale-90 transition-all p-1" title="Anterior">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+                        </svg>
+                    </button>
+
+                    <!-- Botón Play / Pause Circular -->
+                    <button id="playBtn" onclick="toggleAudio()" class="w-11 h-11 rounded-full border border-[#556B2F] text-[#556B2F] flex items-center justify-center hover:bg-[#556B2F]/10 active:scale-95 transition-all shadow-sm shrink-0">
+                        <svg id="playIcon" class="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <svg id="pauseIcon" class="w-5 h-5 fill-current hidden" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                    </button>
+
+                    <!-- Siguiente (Next) -->
+                    <button onclick="restartAudio()" class="text-[#556B2F] hover:opacity-75 active:scale-90 transition-all p-1" title="Siguiente">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+                        </svg>
+                    </button>
+
+                    <!-- Repetir (Repeat) -->
+                    <button onclick="restartAudio()" class="text-[#556B2F] hover:opacity-75 active:scale-90 transition-all p-1" title="Repetir">
+                        <svg class="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="17 1 21 5 17 9"></polyline>
+                            <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                            <polyline points="7 23 3 19 7 15"></polyline>
+                            <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                        </svg>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Nueva Página agregada después de la Página 2 -->
+        <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(1).jpg" 
+             alt="Página 3" 
+             class="w-full h-auto block m-0 p-0 border-0"
+             onerror="handleImageError(this, 2)">
+
+        <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(2).jpg" 
+             alt="Página 4" 
+             class="w-full h-auto block m-0 p-0 border-0"
+             onerror="handleImageError(this, 3)">
+
+        <!-- Página con los botones de ubicación -->
+        <div class="relative w-full m-0 p-0">
+            <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(3).jpg" 
+                 alt="Página 5" 
+                 class="w-full h-auto block m-0 p-0 border-0"
+                 onerror="handleImageError(this, 4)">
+
+            <!-- Botón de ubicación a la mitad -->
+            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" 
+               class="absolute top-[50%] -translate-y-1/2 left-1/2 -translate-x-1/2 bg-white text-gray-900 font-semibold text-xs sm:text-sm px-6 py-2.5 rounded-full shadow-2xl flex items-center gap-2 hover:bg-gray-100 active:scale-95 transition-all z-20 border border-gray-200 tracking-wide uppercase">
+                <svg class="w-4 h-4 fill-amber-600" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <span>Ver Ubicación</span>
+            </a>
+
+            <!-- Botón de ubicación al final -->
+            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" 
+               class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white text-gray-900 font-semibold text-xs sm:text-sm px-6 py-2.5 rounded-full shadow-2xl flex items-center gap-2 hover:bg-gray-100 active:scale-95 transition-all z-20 border border-gray-200 tracking-wide uppercase">
+                <svg class="w-4 h-4 fill-amber-600" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <span>Ver Ubicación</span>
+            </a>
+        </div>
+
+        <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(4).jpg" 
+             alt="Página 6" 
+             class="w-full h-auto block m-0 p-0 border-0"
+             onerror="handleImageError(this, 5)">
+
+        <!-- Página 7 con Cuenta Regresiva integrada -->
+        <div class="relative w-full m-0 p-0">
+            <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(5).jpg" 
+                 alt="Página 7" 
+                 class="w-full h-auto block m-0 p-0 border-0"
+                 onerror="handleImageError(this, 6)">
+
+            <!-- Widget de Cuenta Regresiva compacto y centrado -->
+            <div class="absolute top-[20%] left-1/2 -translate-x-1/2 w-auto bg-transparent text-center text-white z-20">
+                
+                <div class="flex justify-center items-center gap-2 sm:gap-3 text-center">
+                    <div class="flex flex-col items-center gap-1">
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full border-2 border-white flex items-center justify-center shadow-lg backdrop-blur-[1px]">
+                            <span id="cd-days" class="text-sm sm:text-xl font-bold text-white tracking-tight">00</span>
+                        </div>
+                        <span class="text-[10px] sm:text-xs uppercase font-semibold tracking-wider text-white drop-shadow">Días</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1">
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full border-2 border-white flex items-center justify-center shadow-lg backdrop-blur-[1px]">
+                            <span id="cd-hours" class="text-sm sm:text-xl font-bold text-white tracking-tight">00</span>
+                        </div>
+                        <span class="text-[10px] sm:text-xs uppercase font-semibold tracking-wider text-white drop-shadow">Hs</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1">
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full border-2 border-white flex items-center justify-center shadow-lg backdrop-blur-[1px]">
+                            <span id="cd-minutes" class="text-sm sm:text-xl font-bold text-white tracking-tight">00</span>
+                        </div>
+                        <span class="text-[10px] sm:text-xs uppercase font-semibold tracking-wider text-white drop-shadow">Min</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1">
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full border-2 border-white flex items-center justify-center shadow-lg backdrop-blur-[1px]">
+                            <span id="cd-seconds" class="text-sm sm:text-xl font-bold text-white tracking-tight">00</span>
+                        </div>
+                        <span class="text-[10px] sm:text-xs uppercase font-semibold tracking-wider text-white drop-shadow">Seg</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const fallbackImages = [
+            "https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda.jpg",
+            "https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Nuestra%20Boda%20(1).jpg",
+            "https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(1).jpg",
+            "https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(2).jpg",
+            "https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(3).jpg",
+            "https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(4).jpg",
+            "https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(5).jpg"
+        ];
+
+        // Lógica de la cuenta regresiva al 30 de Enero de 2027
+        const weddingDate = new Date('2027-01-30T00:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                document.getElementById('cd-days').textContent = '00';
+                document.getElementById('cd-hours').textContent = '00';
+                document.getElementById('cd-minutes').textContent = '00';
+                document.getElementById('cd-seconds').textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('cd-days').textContent = days < 10 ? '0' + days : days;
+            document.getElementById('cd-hours').textContent = hours < 10 ? '0' + hours : hours;
+            document.getElementById('cd-minutes').textContent = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('cd-seconds').textContent = seconds < 10 ? '0' + seconds : seconds;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        function handleImageError(img, index) {
+            if (fallbackImages[index] && img.src !== fallbackImages[index]) {
+                img.src = fallbackImages[index];
+            }
+        }
+
+        const audio = document.getElementById('bgAudio');
+        const playIcon = document.getElementById('playIcon');
+        const pauseIcon = document.getElementById('pauseIcon');
+
+        // Actualización en tiempo real de la barra de progreso
+        audio.ontimeupdate = function() {
+            if (audio.duration) {
+                const pct = (audio.currentTime / audio.duration) * 100;
+                const bar = document.getElementById('progressBar');
+                if (bar) bar.style.width = pct + '%';
+            }
+        };
+
+        function seekAudio(e) {
+            const container = document.getElementById('progressContainer');
+            if (container && audio.duration) {
+                const rect = container.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                audio.currentTime = (clickX / width) * audio.duration;
+            }
+        }
+
+        function restartAudio() {
+            audio.currentTime = 0;
+            if (audio.paused) {
+                toggleAudio();
+            }
+        }
+
+        let heartFilled = false;
+        function toggleHeart() {
+            const heartIcon = document.getElementById('heartIcon');
+            heartFilled = !heartFilled;
+            if (heartFilled) {
+                heartIcon.classList.remove('fill-none');
+                heartIcon.classList.add('fill-current');
+            } else {
+                heartIcon.classList.remove('fill-current');
+                heartIcon.classList.add('fill-none');
+            }
+        }
+
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    playIcon.classList.add('hidden');
+                    pauseIcon.classList.remove('hidden');
+                }).catch(err => {
+                    console.log("Autoplay interact requirement", err);
+                });
+            } else {
+                audio.pause();
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

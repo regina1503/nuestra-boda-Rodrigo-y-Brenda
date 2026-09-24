@@ -22,6 +22,9 @@
     <meta name="twitter:description" content="¡Acompáñanos a celebrar nuestra boda!">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/miniatura.jpg">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         html, body {
@@ -171,14 +174,6 @@
              onload="adjustImageHeights()"
              onerror="handleImageError(this, 7)">
 
-        <!-- Nueva Página agregada después de la Página 2 -->
-        <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(1).jpg" 
-             alt="Página 3" 
-             data-scale="1.25"
-             class="page-img w-full h-auto block m-0 p-0 border-0 object-cover object-center"
-             onload="adjustImageHeights()"
-             onerror="handleImageError(this, 2)">
-
         <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(2).jpg" 
              alt="Página 4" 
              data-scale="1.25"
@@ -218,6 +213,27 @@
             </a>
         </div>
 
+
+        <!-- Página 7: pases con nombre del invitado (se cambia desde el link: ?invitado=Nombre&pases=2) -->
+        <div class="relative w-full m-0 p-0">
+            <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(1).jpg" 
+                 alt="Página 3" 
+                 data-scale="1.25"
+                 class="page-img w-full h-auto block m-0 p-0 border-0 object-cover object-center"
+                 onload="adjustImageHeights()"
+                 onerror="handleImageError(this, 2)">
+
+            <div style="position:absolute;top:17.5%;left:50%;transform:translateX(-50%);width:80%;text-align:center;color:#6B7A3A;z-index:20;user-select:none;line-height:1.15">
+                <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(15px,4.4vw,22px);letter-spacing:.04em">Esta invitación es para:</p>
+                <p id="guestName" style="margin:.2em 0 0;font-family:'Great Vibes',cursive;font-size:clamp(34px,10.5vw,54px);line-height:1.1;overflow-wrap:break-word">Nuestro Invitado</p>
+                <div style="margin:clamp(8px,2.6vw,14px) auto;width:30%;height:1px;background:rgba(107,122,58,.5)"></div>
+                <div id="passesBox">
+                    <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(15px,4.4vw,22px);letter-spacing:.04em">Hemos reservado</p>
+                    <p id="passesNum" style="margin:.1em 0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(46px,14vw,72px);line-height:1">1</p>
+                    <p id="passesLabel" style="margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(15px,4.4vw,22px);letter-spacing:.04em">pase en tu honor</p>
+                </div>
+            </div>
+        </div>
 
         <!-- Imagen (7) antes de la cuenta regresiva -->
         <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(7).jpg" 
@@ -287,6 +303,21 @@
         window.addEventListener('load', adjustImageHeights);
         window.addEventListener('resize', adjustImageHeights);
         document.addEventListener('DOMContentLoaded', adjustImageHeights);
+
+        // Nombre del invitado y número de pases desde el link
+        // Ejemplo: ...index.html?invitado=Familia%20Pérez&pases=4
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            const name = (params.get('invitado') || params.get('nombre') || '').trim();
+            const passes = parseInt(params.get('pases') || '', 10);
+            if (name) document.getElementById('guestName').textContent = name;
+            if (!isNaN(passes) && passes > 0) {
+                document.getElementById('passesNum').textContent = passes;
+                document.getElementById('passesLabel').textContent = passes === 1 ? 'pase en tu honor' : 'pases en tu honor';
+            } else if (params.has('pases')) {
+                document.getElementById('passesBox').style.display = 'none';
+            }
+        })();
 
         const fallbackImages = [
             "https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda.jpg",

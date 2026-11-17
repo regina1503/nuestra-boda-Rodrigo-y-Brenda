@@ -22,6 +22,7 @@
     <meta name="twitter:description" content="¡Acompáñanos a celebrar nuestra boda!">
     <meta name="twitter:image" content="https://regina1503.github.io/nuestra-boda-Rodrigo-y-Brenda/miniatura.jpg">
 
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="estilos.css">
     <style>
         html, body {
@@ -263,7 +264,7 @@
         function adjustImageHeights() {
             const images = document.querySelectorAll('.page-img');
             images.forEach(img => {
-                const mult = parseFloat(img.getAttribute('data-scale') || '1');
+                const mult = 1;
                 img.style.height = 'auto';
                 const baseHeight = img.getBoundingClientRect().height;
                 if (baseHeight > 0) {

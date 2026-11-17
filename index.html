@@ -9,8 +9,8 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Nuestra Boda Rodrigo & Brenda 💕">
     <meta property="og:description" content="¡Acompáñanos a celebrar nuestra boda!">
-    <meta property="og:image" content="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/miniatura.jpg">
-    <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/miniatura.jpg">
+    <meta property="og:image" content="https://regina1503.github.io/nuestra-boda-Rodrigo-y-Brenda/miniatura.jpg">
+    <meta property="og:image:secure_url" content="https://regina1503.github.io/nuestra-boda-Rodrigo-y-Brenda/miniatura.jpg">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="600">
     <meta property="og:image:height" content="938">
@@ -20,9 +20,9 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Nuestra Boda Rodrigo & Brenda 💕">
     <meta name="twitter:description" content="¡Acompáñanos a celebrar nuestra boda!">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/miniatura.jpg">
+    <meta name="twitter:image" content="https://regina1503.github.io/nuestra-boda-Rodrigo-y-Brenda/miniatura.jpg">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="estilos.css">
     <style>
         html, body {
             margin: 0;
@@ -71,30 +71,25 @@
 <body class="m-0 p-0 bg-black min-h-screen flex flex-col items-center">
 
     <!-- Elemento de audio con la canción Suspiros -->
-    <audio id="bgAudio" loop preload="auto">
-        <source src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Suspiros%20%20Video%20Oficial%20%20-%20El%20Coyote%20y%20su%20Banda%20Tierra%20Santa.mp3" type="audio/mpeg">
-        <source src="https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Suspiros%20%20Video%20Oficial%20%20-%20El%20Coyote%20y%20su%20Banda%20Tierra%20Santa.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="bgAudio" loop preload="none" src="cancion.mp3"></audio>
 
     <!-- Layout continuo vertical -->
     <main class="w-full max-w-2xl mx-auto m-0 p-0 flex flex-col leading-none">
         
         <!-- Imagen "(3)" antes de la página 1 -->
-        <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(3).jpg" 
+        <img src="img/01.jpg" width="1080" height="1688" fetchpriority="high" 
              alt="Portada" 
              data-scale="1.27"
              class="page-img w-full h-auto block m-0 p-0 border-0 object-cover object-center"
-             onload="adjustImageHeights()"
-             onerror="handleImageError(this, 10)">
+             onload="adjustImageHeights()">
 
         <!-- Página 2 con el reproductor de música integrado -->
         <div class="relative w-full m-0 p-0">
-            <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20(1).jpg" 
+            <img src="img/02.jpg" width="1080" height="1688" loading="lazy" decoding="async" 
                  alt="Página 2" 
                  data-scale="1.25"
                  class="page-img w-full h-auto block m-0 p-0 border-0 object-cover object-center"
-                 onload="adjustImageHeights()"
-                 onerror="handleImageError(this, 1)">
+                 onload="adjustImageHeights()">
 
             <!-- Reproductor sobrepuesto con diseño minimalista en verde olivo según referencia -->
             <div class="absolute top-[14%] left-1/2 -translate-x-1/2 w-[80%] max-w-xs sm:max-w-sm flex flex-col gap-2 text-[#556B2F] z-20 select-none drop-shadow-[0_1px_2px_rgba(255,255,255,0.7)]">
@@ -164,44 +159,39 @@
             </div>
         </div>
 
-        <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda.jpg" 
+        <img src="img/03.jpg" width="1080" height="1688" loading="lazy" decoding="async" 
              alt="Página 1" 
              data-scale="1.27"
              class="page-img w-full h-auto block m-0 p-0 border-0 object-cover object-center"
-             onload="adjustImageHeights()"
-             onerror="handleImageError(this, 0)">
+             onload="adjustImageHeights()">
 
         <!-- Imagen (6) después de la página 2 -->
-        <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(6).jpg" 
+        <img src="img/04.jpg" width="1080" height="1688" loading="lazy" decoding="async" 
              alt="Imagen 6" 
              data-scale="1.25"
              class="page-img w-full h-auto block m-0 p-0 border-0 object-cover object-center"
-             onload="adjustImageHeights()"
-             onerror="handleImageError(this, 7)">
+             onload="adjustImageHeights()">
 
-        <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(2).jpg" 
+        <img src="img/05.jpg" width="1080" height="1688" loading="lazy" decoding="async" 
              alt="Página 4" 
              data-scale="1.25"
              class="page-img w-full h-auto block m-0 p-0 border-0 object-cover object-center"
-             onload="adjustImageHeights()"
-             onerror="handleImageError(this, 3)">
+             onload="adjustImageHeights()">
 
         <!-- Imagen (8) después de la página 4 -->
-        <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(8).jpg" 
+        <img src="img/06.jpg" width="1080" height="1688" loading="lazy" decoding="async" 
              alt="Imagen 8" 
              data-scale="1.25"
              class="page-img w-full h-auto block m-0 p-0 border-0 object-cover object-center"
-             onload="adjustImageHeights()"
-             onerror="handleImageError(this, 9)">
+             onload="adjustImageHeights()">
 
         <!-- Página con los botones de ubicación -->
         <div class="relative w-full m-0 p-0">
-            <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(10).jpg" 
+            <img src="img/07.jpg" width="1080" height="1688" loading="lazy" decoding="async" 
                  alt="Página 5" 
                  data-scale="1.31"
                  class="page-img w-full h-auto block m-0 p-0 border-0 object-cover object-center"
-                 onload="adjustImageHeights()"
-                 onerror="handleImageError(this, 4)">
+                 onload="adjustImageHeights()">
 
             <!-- Botón de ubicación a la mitad -->
             <a href="https://www.google.com/maps/place/20%C2%B024'25.9%22N+100%C2%B006'09.8%22W/@20.4071235,-100.1026619,331m/data=!3m1!1e3!4m4!3m3!8m2!3d20.4071983!4d-100.1027267?hl=es&amp;entry=ttu&amp;g_ep=EgoyMDI2MDkyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" 
@@ -220,21 +210,19 @@
 
 
         <!-- Imagen (7) antes de la cuenta regresiva -->
-        <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(7).jpg" 
+        <img src="img/08.jpg" width="1080" height="1688" loading="lazy" decoding="async" 
              alt="Imagen 7" 
              data-scale="1.25"
              class="page-img w-full h-auto block m-0 p-0 border-0 object-cover object-center"
-             onload="adjustImageHeights()"
-             onerror="handleImageError(this, 8)">
+             onload="adjustImageHeights()">
 
         <!-- Página 7 con Cuenta Regresiva integrada -->
         <div class="relative w-full m-0 p-0">
-            <img src="https://raw.githubusercontent.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(11).jpg" 
+            <img src="img/09.jpg" width="1080" height="1688" loading="lazy" decoding="async" 
                  alt="Página 7" 
                  data-scale="1.33"
                  class="page-img w-full h-auto block m-0 p-0 border-0 object-cover object-center"
-                 onload="adjustImageHeights()"
-                 onerror="handleImageError(this, 6)">
+                 onload="adjustImageHeights()">
 
             <!-- Widget de Cuenta Regresiva compacto y centrado -->
             <div class="absolute top-[20%] left-1/2 -translate-x-1/2 w-auto bg-transparent text-center text-white z-20">
@@ -288,20 +276,6 @@
         window.addEventListener('resize', adjustImageHeights);
         document.addEventListener('DOMContentLoaded', adjustImageHeights);
 
-        const fallbackImages = [
-            "https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda.jpg",
-            "https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Nuestra%20Boda%20(1).jpg",
-            "https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(1).jpg",
-            "https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(2).jpg",
-            "https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(10).jpg",
-            "https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(4).jpg",
-            "https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(11).jpg",
-            "https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(6).jpg",
-            "https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(7).jpg",
-            "https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(8).jpg",
-            "https://github.com/regina1503/nuestra-boda-Rodrigo-y-Brenda/raw/main/Nuestra%20Boda%20Rodrigo%20y%20Brenda%20(3).jpg"
-        ];
-
         // Lógica de la cuenta regresiva al 30 de Enero de 2027
         const weddingDate = new Date('2027-01-30T00:00:00').getTime();
 
@@ -330,12 +304,6 @@
 
         setInterval(updateCountdown, 1000);
         updateCountdown();
-
-        function handleImageError(img, index) {
-            if (fallbackImages[index] && img.src !== fallbackImages[index]) {
-                img.src = fallbackImages[index];
-            }
-        }
 
         const audio = document.getElementById('bgAudio');
         const playIcon = document.getElementById('playIcon');
